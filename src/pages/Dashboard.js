@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("/api/projects")
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects`)
       setProjects(res.data)
       setLoading(false)
     } catch (error) {
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const handleCreateProject = async (projectData) => {
     try {
-      const res = await axios.post("/api/projects", projectData)
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/projects`, projectData)
       setProjects([...projects, res.data])
       setIsModalOpen(false)
       toast.success("Project created successfully")
